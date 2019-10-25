@@ -13,7 +13,7 @@
 #                                                          #
 # hprose io for python 2.3+                                #
 #                                                          #
-# LastModified: Mar 8, 2015                                #
+# LastModified: Oct 25, 2019                               #
 # Author: Ma Bingyao <andot@hprose.com>                    #
 #                                                          #
 ############################################################
@@ -27,6 +27,7 @@ from threading import RLock
 from uuid import UUID
 from hprose.common import HproseException
 import decimal
+import numpy
 
 Unicode = False
 
@@ -634,6 +635,22 @@ class HproseWriter(object):
         elif isinstance(v, int): self.writeInteger(v)
         elif isinstance(v, float): self.writeDouble(v)
         elif isinstance(v, decimal.Decimal): self.writeDouble(v)
+        elif isinstance(v, numpy.bool_): self.writeBoolean(v)
+        elif isinstance(v, numpy.int_): self.writeInteger(v)
+        elif isinstance(v, numpy.intc): self.writeLong(v)
+        elif isinstance(v, numpy.intp): self.writeLong(v)
+        elif isinstance(v, numpy.int8): self.writeInteger(v)
+        elif isinstance(v, numpy.int16): self.writeInteger(v)
+        elif isinstance(v, numpy.int32): self.writeInteger(v)
+        elif isinstance(v, numpy.int64): self.writeLong(v)
+        elif isinstance(v, numpy.uint8): self.writeInteger(v)
+        elif isinstance(v, numpy.uint16): self.writeInteger(v)
+        elif isinstance(v, numpy.uint32): self.writeInteger(v)
+        elif isinstance(v, numpy.uint64): self.writeLong(v)
+        elif isinstance(v, numpy.float_): self.writeDouble(v)
+        elif isinstance(v, numpy.float16): self.writeDouble(v)
+        elif isinstance(v, numpy.float32): self.writeDouble(v)
+        elif isinstance(v, numpy.float64): self.writeDouble(v)
         elif isinstance(v, long): self.writeLong(v)
         elif isinstance(v, str):
             if v == '':
