@@ -636,7 +636,7 @@ class HproseWriter(object):
         elif isinstance(v, float): self.writeDouble(v)
         elif isinstance(v, decimal.Decimal): self.writeDouble(v)
         elif isinstance(v, numpy.bool_): self.writeBoolean(v)
-        elif isinstance(v, numpy.int_): self.writeInteger(v)
+        elif isinstance(v, numpy.int_): self.writeLong(v)
         elif isinstance(v, numpy.intc): self.writeLong(v)
         elif isinstance(v, numpy.intp): self.writeLong(v)
         elif isinstance(v, numpy.int8): self.writeInteger(v)
